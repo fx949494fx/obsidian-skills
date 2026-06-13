@@ -5,6 +5,8 @@
 这些 skills 遵循 [Agent Skills specification](https://agentskills.io/specification)，可被 Claude Code、Codex、OpenCode 等兼容 Agent Skills 的工具使用。
 
 > 注意：`nature-academic-search` 和 `nature-reader` 属于 nature skills 包，不属于本 Obsidian skills 包；本文只把它们列为“建议配合使用”的外部能力。
+>
+> `fx949494fx/literature-skills` 可作为上游医学综述流水线，提供检索、筛选、Zotero 导入计划、evidence packets、精读强化、综述框架和初稿；本仓库负责把这些结果沉淀为 Obsidian vault 内的长期知识系统。
 
 ## 安装
 
@@ -76,6 +78,21 @@ git clone https://github.com/fx949494fx/obsidian-skills.git ~/.opencode/skills/o
   -> 概念页/MOC/证据矩阵/论文论点
   -> Canvas/Bases 可视化与持续维护
 ```
+
+如果上游使用 `fx949494fx/literature-skills`，推荐流程为：
+
+```text
+literature-search
+  -> paper-screening-score
+  -> zotero-manager
+  -> paper-metadata-extractor
+  -> paper-deep-reading
+  -> obsidian-literature-notes
+  -> obsidian-literature-synthesis
+  -> Canvas/Bases 可视化与持续维护
+```
+
+这时 `paper_evidence_packets.jsonl` 和 `deep_reading_evidence_packets.jsonl` 是结构化证据来源；Obsidian 笔记负责呈现、链接和长期维护，不替代 evidence packet。
 
 ### 推荐目录
 
@@ -164,6 +181,7 @@ screening_score: 0-100
 |---|---|---|
 | `nature-academic-search` | 文献检索、PubMed/CrossRef/arXiv、RIS/BibTeX、题录管理 | 将检索结果、PMID/DOI 或 RIS/BibTeX 交给初筛与 Zotero 导入环节 |
 | `nature-reader` | 从 PDF、DOI、publisher HTML 或粘贴全文生成结构化精读 | 将精读结果写入 `01 Papers` 的 `## 全文精读` 小节 |
+| `fx949494fx/literature-skills` | 医学综述检索、筛选、Zotero 导入计划、evidence packets、精读强化和综述初稿 | 通过 `obsidian-literature-notes` 将结构化结果转成 `00 Inbox`、`01 Papers`、MOC、证据矩阵和论文论点的输入 |
 
 ## 常用请求
 

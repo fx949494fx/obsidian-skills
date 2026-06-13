@@ -6,6 +6,8 @@
 
 注意：`nature-academic-search` 和 `nature-reader` 属于 nature skills 包，不属于 Obsidian skills 包。本手册只建议在检索和全文阅读环节与它们配合使用。
 
+如果用户使用 `fx949494fx/literature-skills` 作为上游综述流水线，Obsidian 侧应消费其 `paper_evidence_packets.jsonl`、`deep_reading_evidence_packets.jsonl`、`evidence_allocation_matrix.csv` 和 `obsidian-literature-notes` 交接包。详细规则见 `references/literature-skills-integration.md`。
+
 ## Obsidian 流程内技能
 
 | 阶段 | 主要 skill/插件 | 用法 |
@@ -17,6 +19,27 @@
 | 知识提炼 | `obsidian-literature-synthesis` | 从 `01 Papers` 提炼 MOC、概念页、矩阵和论文论点 |
 | 表格视图 | `obsidian-bases` | 为文献库创建可筛选的数据库视图 |
 | 知识地图 | `json-canvas` | 创建 `.canvas` 研究框架图和证据图谱 |
+
+## 与 literature-skills 串联
+
+当上游已经运行 `fx949494fx/literature-skills` 时，不需要重复做摘要初筛和 evidence packet 抽取。推荐串联为：
+
+```text
+literature-search
+  -> paper-screening-score
+  -> zotero-manager
+  -> paper-metadata-extractor
+  -> paper-deep-reading
+  -> obsidian-literature-notes
+  -> obsidian-literature-synthesis
+```
+
+职责边界：
+
+- `paper-metadata-extractor` 和 `paper-deep-reading` 保留结构化证据数据层。
+- `obsidian-literature-notes` 负责把上游结构化结果转成 Obsidian 笔记和交接清单。
+- `obsidian-literature-synthesis` 负责从 `01 Papers` 和交接清单更新 MOC、概念页、证据矩阵、论文论点、Canvas 和 Bases。
+- `review_draft.md` 只能作为写作结构参考；事实证据应回到文献笔记、evidence packets 和全文核验结果。
 
 ## 建议配合使用的外部 Nature Skills
 

@@ -15,6 +15,7 @@ description: >-
 - 用户已有 `01 Papers` 精读笔记，想总结主题、概念、证据和论文论点：用本 skill。
 - 用户要把新增文献继续纳入已有体系：用本 skill 的“增量纳入”流程。
 - 用户要生成 Canvas 或 Bases：本 skill 负责设计信息结构，再调用 `json-canvas` 或 `obsidian-bases`。
+- 用户使用 `fx949494fx/literature-skills` 已生成 evidence packets、精读强化结果或综述框架：先读取 `references/literature-skills-integration.md`，再把上游结构化证据纳入 Obsidian 知识体系。
 
 ## 标准目录约定
 
@@ -74,3 +75,5 @@ description: >-
 ## 详细参考
 
 需要完整中文操作手册时，读取 `references/workflow-zh.md`。
+
+如果输入来自 `fx949494fx/literature-skills`，读取 `references/literature-skills-integration.md`。
