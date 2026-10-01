@@ -1,0 +1,4 @@
+interface:
+  display_name: "科研灵感库"
+  short_description: "捕捉、整理、评估并推进 Obsidian 中的日常科研想法"
+  default_prompt: "Use $obsidian-research-ideas to capture and organize a research idea in my Obsidian vault."

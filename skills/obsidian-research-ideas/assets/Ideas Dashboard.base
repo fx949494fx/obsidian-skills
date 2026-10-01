@@ -1,0 +1,85 @@
+filters:
+  and:
+    - 'file.inFolder("05 Research Ideas")'
+    - 'file.ext == "md"'
+    - 'type == "research-idea"'
+properties:
+  status:
+    displayName: 状态
+  maturity:
+    displayName: 成熟度
+  priority:
+    displayName: 优先级
+  topics:
+    displayName: 主题
+  source_type:
+    displayName: 来源
+  next_action:
+    displayName: 下一步
+  related_projects:
+    displayName: 关联项目
+  updated:
+    displayName: 更新日期
+  file.mtime:
+    displayName: 最近修改
+views:
+  - type: table
+    name: 待整理
+    filters:
+      and:
+        - 'status == "seed"'
+    order:
+      - file.name
+      - topics
+      - priority
+      - next_action
+      - file.mtime
+  - type: table
+    name: 推进中
+    filters:
+      or:
+        - 'status == "developing"'
+        - 'status == "testing"'
+    groupBy:
+      property: status
+      direction: ASC
+    order:
+      - file.name
+      - status
+      - maturity
+      - priority
+      - topics
+      - next_action
+      - related_projects
+      - updated
+  - type: table
+    name: 暂存
+    filters:
+      and:
+        - 'status == "parked"'
+    order:
+      - file.name
+      - topics
+      - next_action
+      - updated
+  - type: table
+    name: 全部想法
+    order:
+      - file.name
+      - status
+      - maturity
+      - priority
+      - topics
+      - source_type
+      - next_action
+      - updated
+  - type: table
+    name: 已归档
+    filters:
+      and:
+        - 'status == "archived"'
+    order:
+      - file.name
+      - topics
+      - related_projects
+      - updated
